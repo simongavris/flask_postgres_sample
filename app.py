@@ -1,5 +1,4 @@
 from flask import Flask
-import yaml
 import psycopg2 as psy
 import datetime
 import os
