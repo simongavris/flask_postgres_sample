@@ -1,7 +1,15 @@
 from flask import Flask
+import yaml
 import psycopg2 as psy
+import datetime
+import os
 
-con = psy.connect(host="127.0.0.1", database="test", user="postgres", password="secret")
+con = psy.connect(
+        host=os.environ.get("DBHOST", "127.0.0.1"),
+        database=os.environ.get("DBNAME","test"),
+        user=os.environ.get("DBUSER", "postgres"),
+        password=os.environ.get("DBPASSWORD", "secret")
+)
 
 def create_table(connection):
     cur = connection.cursor()
